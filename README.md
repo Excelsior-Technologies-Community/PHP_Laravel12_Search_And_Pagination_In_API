@@ -11,7 +11,7 @@ This project demonstrates a complete Property Listing System using Laravel 12, i
 ✔ Clean Controller + Model with comments
 ✔ Fully documented steps & commands
 
-📌 Features
+ Features
 ---
 API + Web UI (Blade)
 
@@ -27,7 +27,7 @@ MySQL database support
 
 Step-by-step artisan commands
 
-🛠️ Requirements
+ Requirements
 ---
 PHP ≥ 8.1
 
@@ -37,7 +37,7 @@ MySQL
 
 Node.js (optional, not needed for this tutorial)
 
-🚀 Installation Guide
+ Installation Guide
 ---
 Step 1 — Create Laravel 12 Project
 
@@ -522,7 +522,7 @@ Web routes: return Blade views
 Soft delete via POST/DELETE
 
 
-🎨 Step 6 — Views (Blade Templates)
+ Step 6 — Views (Blade Templates)
 
 Create folder: resources/views/properties/
 ```
@@ -705,16 +705,16 @@ resources/views/properties/edit.blade.php
 
 Step 7 — API Testing (Postman)
 ---
-1️⃣ Get all properties
+1️) Get all properties
 ```
 GET /api/properties
 ```
-2️⃣ Search
+2️) Search
 ```
 GET /api/properties?search=Gandhinagar
 ```
 
-3️⃣ Create
+3️) Create
 ```
 POST /api/properties/create
 
@@ -730,12 +730,12 @@ json
      "status": true
   }
 ```
-4️⃣ Update
+4️) Update
 ```
 POST /api/properties/update/5
 ```
 
-5️⃣ Delete (Soft Delete)
+5️) Delete (Soft Delete)
 ```
 POST /api/properties/delete/5
 ```
