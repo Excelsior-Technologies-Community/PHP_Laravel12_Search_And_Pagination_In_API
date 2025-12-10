@@ -3,13 +3,13 @@ PHP_Laravel12_Search_And_Pagination_In_API
 
 This project demonstrates a complete Property Listing System using Laravel 12, including:
 ---
-✔ REST API for CRUD operations
-✔ Search by ID, title, description, price, location
-✔ Pagination (API + Web)
-✔ Soft Delete (deleted_at + status=deleted)
-✔ Bootstrap Web UI (Add/Edit/Delete/View)
-✔ Clean Controller + Model with comments
-✔ Fully documented steps & commands
+ REST API for CRUD operations
+ Search by ID, title, description, price, location
+ Pagination (API + Web)
+ Soft Delete (deleted_at + status=deleted)
+ Bootstrap Web UI (Add/Edit/Delete/View)
+ Clean Controller + Model with comments
+ Fully documented steps & commands
 
  Features
 ---
