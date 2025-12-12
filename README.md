@@ -703,42 +703,53 @@ resources/views/properties/edit.blade.php
 ```
 
 
-Step 7 — API Testing (Postman)
+Step 7 — API Testing (Postman) and also show this type output:
 ---
 1️) Get all properties
 ```
 GET /api/properties
 ```
+
+<img width="1919" height="1024" alt="Screenshot 2025-12-10 104956" src="https://github.com/user-attachments/assets/81eb1c76-bf93-4e0f-9f91-0d735f80e5e7" />
+
+
 2️) Search
 ```
-GET /api/properties?search=Gandhinagar
+GET /api/properties?search=This is Best Book
 ```
+<img width="1919" height="1015" alt="Screenshot 2025-12-10 104132" src="https://github.com/user-attachments/assets/cba59307-0365-4990-b416-c1ac95836339" />
+
+```
+GET /api/properties?search=Ahmedabad
+```
+
+<img width="1919" height="1026" alt="Screenshot 2025-12-10 104157" src="https://github.com/user-attachments/assets/0deb3928-03f8-45ed-8d8b-7348205235b2" />
+
+
 
 3️) Create
 ```
 POST /api/properties/create
 
 ```
-JSON:
-```
-json
-  {
-     "title": "Shivpuran",
-     "description": "This is Book.",
-     "price": 299.00,
-     "location": "Gandhinagar",
-     "status": true
-  }
-```
+<img width="1919" height="1027" alt="Screenshot 2025-12-10 102854" src="https://github.com/user-attachments/assets/f9401f70-d536-4ad0-a660-b9c77df9aba8" />
+
+
 4️) Update
 ```
-POST /api/properties/update/5
+POST /api/properties/update/1
 ```
+<img width="1919" height="1020" alt="Screenshot 2025-12-10 103030" src="https://github.com/user-attachments/assets/b09d24fb-70bf-430b-bd68-9dd9d608f25a" />
+
+
 
 5️) Delete (Soft Delete)
 ```
-POST /api/properties/delete/5
+POST /api/properties/delete/3
 ```
+
+<img width="1919" height="1018" alt="Screenshot 2025-12-10 111844" src="https://github.com/user-attachments/assets/f78b7867-4d7e-45ec-b707-2243e9a45c58" />
+
 
 Step 8 — Folder Tree
 ```
