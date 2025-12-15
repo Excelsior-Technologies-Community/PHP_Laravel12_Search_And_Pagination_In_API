@@ -725,7 +725,13 @@ GET /api/properties?search=Ahmedabad
 
 <img width="1919" height="1026" alt="Screenshot 2025-12-10 104157" src="https://github.com/user-attachments/assets/0deb3928-03f8-45ed-8d8b-7348205235b2" />
 
+Page 
 
+```
+GET /api/properties/?page=1
+```
+
+<img width="1919" height="1009" alt="Screenshot 2025-12-10 104828" src="https://github.com/user-attachments/assets/bd9dd0e3-838d-4166-8345-d88009e8f12a" />
 
 3️) Create
 ```
@@ -749,6 +755,12 @@ POST /api/properties/delete/3
 ```
 
 <img width="1919" height="1018" alt="Screenshot 2025-12-10 111844" src="https://github.com/user-attachments/assets/f78b7867-4d7e-45ec-b707-2243e9a45c58" />
+
+
+
+
+
+
 
 
 Step 8 — Folder Tree
