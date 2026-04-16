@@ -8,21 +8,34 @@ use Illuminate\Http\Request;
 
 class PropertyController extends Controller
 {
-    // List all properties with search + pagination
+    // List all properties with search + pagination + filters
     public function index(Request $request)
     {
         $query = Property::query();
 
-        // Search by title or location
-        if ($request->has('search')) {
-            $search = $request->input('search');
+        // Search by ID, title, description, price, or location
+        if ($request->has('search') && !empty($request->search)) {
+            $search = $request->search;
             $query->where(function ($q) use ($search) {
-            $q->where('id', $search) // exact match for ID
-              ->orWhere('title', 'like', "%{$search}%")
-              ->orWhere('description', 'like', "%{$search}%")
-              ->orWhere('price', 'like', "%{$search}%")
-              ->orWhere('location', 'like', "%{$search}%");
-             });
+                $q->where('id', $search)
+                  ->orWhere('title', 'like', "%{$search}%")
+                  ->orWhere('description', 'like', "%{$search}%")
+                  ->orWhere('price', 'like', "%{$search}%")
+                  ->orWhere('location', 'like', "%{$search}%");
+            });
+        }
+
+        // Filter by status (active/inactive)
+        if ($request->has('status') && in_array($request->status, ['active', 'inactive'])) {
+            $query->where('status', $request->status);
+        }
+
+        // Filter by price range
+        if ($request->has('min_price')) {
+            $query->where('price', '>=', $request->min_price);
+        }
+        if ($request->has('max_price')) {
+            $query->where('price', '<=', $request->max_price);
         }
 
         // Pagination (3 per page)
@@ -71,23 +84,42 @@ class PropertyController extends Controller
     }
 
     // Delete property (soft delete)
-   public function destroy($id)
-{
-    $property = Property::findOrFail($id);
+    public function destroy($id)
+    {
+        $property = Property::findOrFail($id);
 
-    // update status column
-    $property->status = 'deleted';
-    $property->save();
+        // Update status column
+        $property->status = 'deleted';
+        $property->save();
 
-    // soft delete (fills deleted_at automatically)
-    $property->delete();
+        // Soft delete (fills deleted_at automatically)
+        $property->delete();
 
-    return response()->json([
-        'message' => 'Property deleted successfully',
-        'status' => $property->status,
-        'deleted_at' => $property->deleted_at
-    ]);
-}
+        return response()->json([
+            'message' => 'Property deleted successfully',
+            'status' => $property->status,
+            'deleted_at' => $property->deleted_at
+        ]);
+    }
 
+    // Bulk soft delete properties
+    public function destroyMultiple(Request $request)
+    {
+        $request->validate([
+            'ids' => 'required|array',
+            'ids.*' => 'integer|exists:properties,id',
+        ]);
 
+        $properties = Property::whereIn('id', $request->ids)->get();
+
+        foreach ($properties as $property) {
+            $property->status = 'deleted';
+            $property->save();
+            $property->delete(); // soft delete
+        }
+
+        return response()->json([
+            'message' => count($properties) . ' properties deleted successfully',
+        ]);
+    }
 }
