@@ -28,6 +28,9 @@ Route::post('properties/update/{id}', [PropertyController::class, 'update']);
 // Delete property by ID (via POST)
 Route::post('properties/delete/{id}', [PropertyController::class, 'destroy']);
 
+// Bulk delete properties (soft delete)
+Route::post('properties/delete-multiple', [PropertyController::class, 'destroyMultiple']);
+
 // Optional test route
 Route::get('test', function () {
     return response()->json(['message' => 'API is working']);
